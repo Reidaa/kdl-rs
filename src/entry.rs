@@ -633,10 +633,10 @@ mod test {
     #[test]
     fn display() {
         let entry = KdlEntry::new(KdlValue::Integer(42));
-        assert_eq!(format!("{}", entry), "42");
+        assert_eq!(format!("{entry}"), "42");
 
         let entry = KdlEntry::new_prop("name", KdlValue::Integer(42));
-        assert_eq!(format!("{}", entry), "name=42");
+        assert_eq!(format!("{entry}"), "name=42");
     }
 
     #[cfg(feature = "v1")]

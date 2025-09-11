@@ -696,21 +696,21 @@ final;";
 
         let bar = doc.get("bar").expect("expected a bar node");
         assert_eq!(
-            format!("{}", bar),
+            format!("{bar}"),
             "\n         bar \"indented\" // trailing whitespace after this\t\n"
         );
 
         let a = doc.get("a").expect("expected a node");
         assert_eq!(
-            format!("{}", a),
+            format!("{a}"),
             "/*\nSome random comment\n */\n\na;".to_string()
         );
 
         let b = doc.get("b").expect("expected a node");
-        assert_eq!(format!("{}", b), " b;".to_string());
+        assert_eq!(format!("{b}"), " b;".to_string());
 
         // Round-tripping works.
-        assert_eq!(format!("{}", doc), src);
+        assert_eq!(format!("{doc}"), src);
 
         // Programmatic manipulation works.
         let mut node: KdlNode = "new\n".parse()?;
@@ -721,7 +721,7 @@ final;";
         doc.nodes_mut().push(node);
 
         assert_eq!(
-            format!("{}", doc),
+            format!("{doc}"),
             format!("{}new \"blah\"=0xDEADbeef\n", src)
         );
 
@@ -754,7 +754,7 @@ bar prop=value 1 2 #false #null {
 }
 baz
 "#,
-            format!("{}", doc)
+            format!("{doc}")
         );
     }
 

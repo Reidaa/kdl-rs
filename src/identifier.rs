@@ -215,13 +215,13 @@ mod test {
     #[test]
     fn formatting() {
         let plain = KdlIdentifier::from("foo");
-        assert_eq!(format!("{}", plain), "foo");
+        assert_eq!(format!("{plain}"), "foo");
 
         let quoted = KdlIdentifier::from("foo\"bar");
-        assert_eq!(format!("{}", quoted), r#""foo\"bar""#);
+        assert_eq!(format!("{quoted}"), r#""foo\"bar""#);
 
         let mut custom_repr = KdlIdentifier::from("foo");
         custom_repr.set_repr(r#""foo/bar""#.to_string());
-        assert_eq!(format!("{}", custom_repr), r#""foo/bar""#);
+        assert_eq!(format!("{custom_repr}"), r#""foo/bar""#);
     }
 }

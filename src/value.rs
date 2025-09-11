@@ -38,9 +38,7 @@ impl PartialEq for KdlValue {
         match (self, other) {
             (Self::String(l0), Self::String(r0)) => l0 == r0,
             (Self::Integer(l0), Self::Integer(r0)) => l0 == r0,
-            (Self::Float(l0), Self::Float(r0)) => {
-                normalize_float(l0) == normalize_float(r0)
-            }
+            (Self::Float(l0), Self::Float(r0)) => normalize_float(l0) == normalize_float(r0),
             (Self::Bool(l0), Self::Bool(r0)) => l0 == r0,
             _ => core::mem::discriminant(self) == core::mem::discriminant(other),
         }
@@ -161,11 +159,7 @@ pub(crate) fn is_plain_ident(ident: &str) -> bool {
         .find(crate::v2_parser::is_disallowed_ident_char)
         .is_none()
         && ident_bytes.first().map(|c| c.is_ascii_digit()) != Some(true)
-        && !(ident
-            .chars()
-            .next()
-            .map(|c| matches!(c, '.' | '-' | '+'))
-            == Some(true)
+        && !(ident.chars().next().map(|c| matches!(c, '.' | '-' | '+')) == Some(true)
             && ident_bytes.get(1).map(|c| c.is_ascii_digit()) == Some(true))
         && ident != "inf"
         && ident != "-inf"
@@ -272,18 +266,18 @@ mod test {
     #[test]
     fn formatting() {
         let string = KdlValue::String("foo\n".into());
-        assert_eq!(format!("{}", string), r#""foo\n""#);
+        assert_eq!(format!("{string}"), r#""foo\n""#);
 
         let integer = KdlValue::Integer(1234567890);
-        assert_eq!(format!("{}", integer), "1234567890");
+        assert_eq!(format!("{integer}"), "1234567890");
 
         let float = KdlValue::Float(1234567890.12345);
-        assert_eq!(format!("{}", float), "1234567890.12345");
+        assert_eq!(format!("{float}"), "1234567890.12345");
 
         let boolean = KdlValue::Bool(true);
-        assert_eq!(format!("{}", boolean), "#true");
+        assert_eq!(format!("{boolean}"), "#true");
 
         let null = KdlValue::Null;
-        assert_eq!(format!("{}", null), "#null");
+        assert_eq!(format!("{null}"), "#null");
     }
 }

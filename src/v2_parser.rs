@@ -966,7 +966,10 @@ fn unambiguous_ident(input: &mut Input<'_>) -> PResult<()> {
         cut_err(
             repeat(1.., identifier_char)
                 .verify_map(|s: String| {
-                    if matches!(s.as_str(), "true" | "false" | "null" | "inf" | "-inf" | "nan") {
+                    if matches!(
+                        s.as_str(),
+                        "true" | "false" | "null" | "inf" | "-inf" | "nan"
+                    ) {
                         None
                     } else {
                         Some(s)
