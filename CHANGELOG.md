@@ -1,5 +1,17 @@
 # `kdl` Release Changelog
 
+<a name="6.5.0"></a>
+
+## 6.5.0 (2025-09-11)
+
+### Features
+
+- **msrv:** bump msrv ([e1727e7c](https://github.com/kdl-org/kdl-rs/commit/e1727e7c28e306d5ca4bd31ccb1c4c6dce0efb9d))
+
+### Bug Fixes
+
+- **fmt+clippy:** sigh ([e47ca9c6](https://github.com/kdl-org/kdl-rs/commit/e47ca9c683c044a5c5350334188b051b8d15a956))
+
 <a name="6.4.0"></a>
 
 ## 6.4.0 (2025-09-11)
