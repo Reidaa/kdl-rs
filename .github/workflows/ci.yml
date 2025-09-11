@@ -28,7 +28,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        rust: [1.81, stable]
+        rust: [1.82, stable]
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
